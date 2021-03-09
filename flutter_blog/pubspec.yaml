@@ -33,6 +33,15 @@ dependencies:
   build_web_compilers: ^2.16.4
   build_runner: ^1.11.5
 
+  #markdown
+  flutter_markdown: ^0.6.0
+
+  #getx
+  get: ^3.26.0
+
+  #跳转页面
+  url_launcher: ^6.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -52,6 +61,9 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+
+  assets:
+    - assets/markdown/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
