@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/blog_route.dart';
+import 'package:flutter_blog/utils/config.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: '贰拾肆的宠物_8kEatRadish',
+      title: TextTemplate.appName,
       theme: ThemeData(
         // This is the theme of your application.
         //

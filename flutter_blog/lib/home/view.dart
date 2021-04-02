@@ -1,9 +1,7 @@
 import 'dart:html';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_blog/utils/config.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,36 +23,8 @@ class HomePage extends StatelessWidget {
     return Container(
       width: Get.width,
       height: Get.height,
-      child: FutureBuilder(
-          future: rootBundle.loadString(
-              'assets/markdown/基于ViewModel、LiveData的消息总线OneStepMessage.md'),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.all(40),
-                  child: MarkdownBody(
-                    styleSheet: MarkdownStyleSheet(
-                        h1: GoogleFonts.oswald(
-                            textStyle: Theme.of(context).textTheme.headline2),
-                        code: GoogleFonts.lato(
-                            textStyle: Theme.of(context).textTheme.bodyText1)),
-                    data: snapshot.data,
-                    onTapLink: (url, href, title) {
-                      print("url = $url, \n href = $href , \n title = $title");
-                      _launchURL(href);
-                    },
-                  ),
-                ),
-              );
-            } else {
-              return Center(
-                child: Text("Loading...",
-                    style: GoogleFonts.oswald(
-                        textStyle: Theme.of(context).textTheme.headline1)),
-              );
-            }
-          }),
+      color: ColorUtil.appBgColor,
+      child: Text("我的博客",style: GoogleFonts.lato(fontSize: 20,color: Colors.white),)
     );
   }
 }
