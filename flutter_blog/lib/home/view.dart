@@ -1,9 +1,9 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/utils/app_theme.dart';
 import 'package:flutter_blog/utils/config.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'logic.dart';
@@ -18,13 +18,34 @@ class HomePage extends StatelessWidget {
       ? await launch(_url)
       : throw 'Could not launch $_url';
 
+  bool a = true;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width,
-      height: Get.height,
-      color: ColorUtil.appBgColor,
-      child: Text("我的博客",style: GoogleFonts.lato(fontSize: 20,color: Colors.white),)
-    );
+        width: Get.width,
+        height: Get.height,
+        color: ColorUtil.appBgColor,
+        child: Row(
+          children: [
+            FlatButton(
+              onPressed: (){
+                Get.changeTheme(AppTheme.buildDartTheme());
+              },
+              child: Text(
+                "怎么了黑",
+                style: TextStyle(color: Get.theme.primaryColor),
+              ),
+            ),FlatButton(
+              onPressed: (){
+                Get.changeTheme(AppTheme.buildLightTheme());
+              },
+              child: Text(
+                "怎么了白",
+                style: TextStyle(color: Get.theme.primaryColor),
+              ),
+            )
+          ],
+        ));
   }
 }
