@@ -58,7 +58,7 @@ class AppTheme {
   static ThemeData buildDartTheme() {
     final Color primaryColor = Color(0xff54D3C2);
     final Color secondaryColor = ColorUtil.appBgColor;
-    final ColorScheme colorScheme = const ColorScheme.light().copyWith(
+    final ColorScheme colorScheme = const ColorScheme.dark().copyWith(
       primary: primaryColor,
       secondary: secondaryColor,
     );
