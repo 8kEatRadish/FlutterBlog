@@ -1,8 +1,10 @@
 import 'dart:html';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/utils/app_theme.dart';
-import 'package:flutter_blog/utils/config.dart';
+import 'package:flutter_blog/widget/math_runner.dart';
+import 'package:flutter_blog/widget/run_ball/run_ball.dart';
+import 'package:flutter_blog/widget/skew_shadow_text.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -23,59 +25,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: Get.width,
-        height: Get.height,
-        color: ColorUtil.appBgColor,
-        child: Neumorphic(
-          child: Column(
-            children: [
-              FlatButton(
-                onPressed: () {
-                  Get.changeTheme(AppTheme.buildDartTheme());
-                },
-                child: Text(
-                  "怎么了黑",
-                  style: TextStyle(color: Get.theme.primaryColor),
-                ),
-              ),
-              FlatButton(
-                onPressed: () {
-                  Get.changeTheme(AppTheme.buildLightTheme());
-                },
-                child: NeumorphicText(
-                  "I love flutter",
-                  style: NeumorphicStyle(
-                    depth: 20, //customize depth here
-                    color: Get.theme.primaryColor, //customize color here
-                  ),
-                  textStyle: NeumorphicTextStyle(
-                    fontSize: 18, //customize size here
-                    // AND others usual text style properties (fontFamily, fontWeight, ...)
-                  ),
-                ),
-              ),
-              Neumorphic(
-                child: NeumorphicIcon(
-                  Icons.home_outlined,
-                  style:
-                      NeumorphicStyle(depth: 20, color: Get.theme.accentColor),
-                ),
-                style: NeumorphicStyle(depth: 20, color: Get.theme.primaryColor),
-              ),
-              NeumorphicText(
-                "I love flutter",
-                style: NeumorphicStyle(
-                  depth: 20, //customize depth here
-                  color: Get.theme.primaryColor, //customize color here
-                ),
-                textStyle: NeumorphicTextStyle(
-                  fontSize: 18, //customize size here
-                  // AND others usual text style properties (fontFamily, fontWeight, ...)
-                ),
-              ),
-            ],
-          ),
-        ));
+    return Stack(
+      children: [
+        RunBall(),
+        Container(
+          width: Get.width,
+          height: 200,
+          alignment: Alignment.center,
+          child: SkewShadowText("Blog装修中。。。"),
+        )
+      ],
+    );
   }
 }
