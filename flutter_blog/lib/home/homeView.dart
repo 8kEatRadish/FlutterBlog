@@ -1,8 +1,6 @@
-import 'dart:html';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/widget/math_runner.dart';
 import 'package:flutter_blog/widget/run_ball/run_ball.dart';
 import 'package:flutter_blog/widget/skew_shadow_text.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -12,8 +10,14 @@ import 'package:url_launcher/url_launcher.dart';
 import 'homeLogic.dart';
 import 'homeState.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final HomeLogic logic = Get.put(HomeLogic());
+
   final HomeState state = Get.find<HomeLogic>().state;
 
   ///加载页面
