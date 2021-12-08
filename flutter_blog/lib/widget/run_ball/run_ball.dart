@@ -73,7 +73,7 @@ class _RunBallState extends State<RunBall> with SingleTickerProviderStateMixin {
     });
     setState(() {
       now = DateTime.now().millisecondsSinceEpoch;
-      print("时间差${now - _oldTime}ms");
+      // print("时间差${now - _oldTime}ms");
       _oldTime = now;
     });
   }
