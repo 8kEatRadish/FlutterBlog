@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'home/homeView.dart';
+import 'home/home_page.dart';
 
 /////////////////////////////////////////////
 /// 文件： blog_route.dart

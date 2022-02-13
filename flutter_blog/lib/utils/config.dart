@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 
 class ColorUtil {
   ColorUtil._();
-  static const appBgColor = Color(0xff5e8ed5);
 }
 
 class TextTemplate {

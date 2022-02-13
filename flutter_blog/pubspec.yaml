@@ -29,13 +29,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
-  # web
-#  build_web_compilers: ^2.16.4
-#  build_runner: ^1.11.5
-
-  # markdown
-  flutter_markdown: ^0.6.8
-
   # getX
   get: ^3.26.0
 
@@ -44,15 +37,6 @@ dependencies:
 
   # google字体
   google_fonts: ^2.0.0
-
-  # 新拟物风格
-  flutter_neumorphic: ^3.0.3
-
-  # 游戏引擎
-  flame: ^0.29.4
-
-  # 文字高亮
-  syntax_highlighter: ^0.1.1
 
 dev_dependencies:
   flutter_test:
@@ -75,8 +59,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-    - assets/markdown/
-    - assets/images/
+    - assets/
 
   # An images asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

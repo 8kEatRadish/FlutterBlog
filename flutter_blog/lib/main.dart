@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/blog_route.dart';
-import 'package:flutter_blog/utils/app_theme.dart';
 import 'package:flutter_blog/utils/config.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: TextTemplate.appName,
-      theme: AppTheme.buildDartTheme(),
       initialRoute: RouteConfig.familyBoardHome,
       getPages: RouteConfig.getPages,
     );
