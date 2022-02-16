@@ -2,11 +2,13 @@ import 'dart:html';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_blog/home/home_article_list.dart';
+import 'package:flutter_blog/utils/config.dart';
+import 'package:flutter_blog/utils/enums.dart';
+import 'package:flutter_blog/widget/app_bar_widget.dart';
+import 'package:get/get.dart';
 
-/**
- * https://gravual.com/
- */
+/// https://gravual.com/
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   // Generate a list of dummy items
   final List<Map<String, dynamic>> _items = List.generate(
       200,
@@ -25,32 +27,36 @@ class _HomePageState extends State<HomePage> {
           });
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
+
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+
+    setState(() {
+      print("width = ${Get.width}; height = ${Get.height}");
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          leading: Text("leading"),
-          title: Text("title"),
-        ),
-        body: GridView.custom(
-          gridDelegate: SliverQuiltedGridDelegate(
-            crossAxisCount: 4,
-            mainAxisSpacing: 4,
-            crossAxisSpacing: 4,
-            repeatPattern: QuiltedGridRepeatPattern.inverted,
-            pattern: [
-              QuiltedGridTile(2, 2),
-              QuiltedGridTile(1, 1),
-              QuiltedGridTile(1, 1),
-              QuiltedGridTile(1, 2),
-            ],
-          ),
-          childrenDelegate: SliverChildBuilderDelegate(
-              (context, index) => Card(
-                    child: Center(child: Text(index.toString())),
-                    color: Colors.black45,
-                  ),
-              childCount: 8),
-        ));
+    Widget content = HomeArticleList(8);
+
+    content = Scaffold(backgroundColor: Colors.white, body: content);
+
+    content = Stack(
+      children: [content, Positioned(top: 0, child: AppBarWidget())],
+    );
+
+    return content;
   }
 }
