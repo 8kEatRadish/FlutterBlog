@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/blog_route.dart';
+import 'package:flutter_blog/controller.dart';
 import 'package:flutter_blog/home/widget/home_tag_widget.dart';
 import 'package:flutter_blog/utils/config.dart';
 import 'package:get/get.dart';
@@ -11,6 +13,8 @@ class AppBarWidget extends StatefulWidget {
 }
 
 class _AppBarWidgetState extends State<AppBarWidget> {
+  final Controller _controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     // 头像
@@ -21,7 +25,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
     );
 
     content = Container(
-      color: ColorUtil.backgroundColor(),
+      color: Theme.of(context).colorScheme.surface,
       width: Get.width,
       height: 50,
       child: Row(
@@ -31,11 +35,26 @@ class _AppBarWidgetState extends State<AppBarWidget> {
           content,
           nameWidget(),
           Expanded(child: Container()),
-          HomeTagWidget(TextTemplate.appBarHome(), Icons.home_rounded),
-          HomeTagWidget(TextTemplate.appBarHome(), Icons.home_rounded),
-          HomeTagWidget(TextTemplate.appBarHome(), Icons.home_rounded),
-          HomeTagWidget(TextTemplate.appBarHome(), Icons.home_rounded),
-          HomeTagWidget(TextTemplate.appBarHome(), Icons.home_rounded),
+          HomeTagWidget(TextTemplate.appBarTheme.tr, Icons.color_lens, () {
+            if (Get.isDarkMode) {
+              Get.changeThemeMode(ThemeMode.light);
+            } else {
+              Get.changeThemeMode(ThemeMode.dark);
+            }
+          }),
+          HomeTagWidget(TextTemplate.appBarLanguage.tr, Icons.language_rounded,
+              () {
+            if (_controller.languageType.value == TextTemplate.languageCn) {
+              Get.updateLocale(Locale(TextTemplate.languageEN));
+              _controller.languageType.value = TextTemplate.languageEN;
+            } else {
+              Get.updateLocale(Locale(TextTemplate.languageCn));
+              _controller.languageType.value = TextTemplate.languageCn;
+            }
+          }),
+          HomeTagWidget(TextTemplate.appBarHome.tr, Icons.home_rounded, () {
+            Get.to(RouteConfig.familyBoardHome);
+          }),
           SizedBox(
             width: 24,
           )
@@ -43,28 +62,20 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       ),
     );
 
-    content = ClipRRect(
-      borderRadius: BorderRadius.circular(12),
-      child: content,
-    );
-
     return content;
   }
 
   // 名字
   Widget nameWidget() => Text(
-        TextTemplate.appName(),
-        style: TextStyle(
-            color: ColorUtil.commonLevel1Color(),
-            fontSize: 20,
-            decoration: TextDecoration.none),
+        TextTemplate.appName.tr,
+        style: Get.textTheme.headline1,
       );
 
   // 头像
   Widget avatarWidget() => ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: Image.asset(
-          AssetsUtils.avatar,
+          AssetsUtils.homeAvatar,
           width: 40,
           height: 40,
         ),

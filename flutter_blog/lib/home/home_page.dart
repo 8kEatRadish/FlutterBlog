@@ -51,7 +51,9 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     Widget content = HomeArticleList(8);
 
-    content = Scaffold(backgroundColor: Colors.white, body: content);
+    content = Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: content);
 
     content = Stack(
       children: [content, Positioned(top: 0, child: AppBarWidget())],

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/home/widget/home_welcome_widget.dart';
-import 'package:flutter_blog/utils/config.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-
+/// home页文章列表
 class HomeArticleList extends StatefulWidget {
   final int size;
 

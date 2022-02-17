@@ -1,6 +1,74 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'enums.dart';
+
+ThemeData lightTheme = ThemeData.from(
+    colorScheme: ColorScheme.light(
+        background: Color(0xffffffff),
+        primary: Color(0xff697e9d),
+        // appBar背景色
+        surface: Color(0xccffffff),
+        // 一级文字颜色
+        onPrimary: Color(0xff242424),
+        // 二级文字颜色
+        onSecondary: Color(0xff7f7f7f)),
+    textTheme: TextTheme(
+        // appBar name
+        headline1: TextStyle(
+            color: Color(0xff242424),
+            fontSize: 26,
+            decoration: TextDecoration.none,
+            fontFamily: "xingShu"),
+        // appBar tag
+        // normal
+        headline2: TextStyle(
+            fontSize: 17,
+            color: Color(0xff242424),
+            decoration: TextDecoration.none,
+            fontFamily: "xingShu"),
+        headline3: TextStyle(
+            fontSize: 17,
+            color: Color(0xff697e9d),
+            decoration: TextDecoration.none,
+            fontFamily: "xingShu"),
+        // welcome title
+        headline4: TextStyle(
+            color: Colors.white, fontSize: 50, fontFamily: "maoCao")));
+
+ThemeData darkTheme = ThemeData.from(
+    colorScheme: ColorScheme.dark(
+        background: Color(0xff181818),
+        primary: Color(0xff697e9d),
+        // appBar背景色
+        surface: Color(0xcc181818),
+        // 一级文字颜色
+        onPrimary: Color(0xffd1d1d1),
+        // 二级文字颜色
+        onSecondary: Color(0xff8b8b8b)),
+    textTheme: TextTheme(
+        // appBar name
+        headline1: TextStyle(
+            color: Color(0xffd1d1d1),
+            fontSize: 26,
+            decoration: TextDecoration.none,
+            fontFamily: "xingShu"),
+        // appBar tag
+        // normal
+        headline2: TextStyle(
+            fontSize: 17,
+            color: Color(0xffd1d1d1),
+            decoration: TextDecoration.none,
+            fontFamily: "xingShu"),
+        headline3: TextStyle(
+            fontSize: 17,
+            color: Color(0xff697e9d),
+            decoration: TextDecoration.none,
+            fontFamily: "xingShu"),
+        // welcome title
+        headline4: TextStyle(
+            color: Colors.white, fontSize: 50, fontFamily: "maoCao")));
 
 class ColorUtil {
   ColorUtil._();
@@ -10,95 +78,44 @@ class ColorUtil {
   static setTheme(ThemeType type) {
     _themeType = type;
   }
+}
 
-  // 一级文字颜色
-  static Color commonLevel1Color() {
-    switch (_themeType) {
-      case ThemeType.light:
-        return Color(0xff242424);
-        break;
-      case ThemeType.dark:
-        return Color(0xffd1d1d1);
-        break;
-    }
-    return Color(0xff242424);
-  }
-
-  // 二级文字颜色
-  static Color commonLevel2Color() {
-    switch (_themeType) {
-      case ThemeType.light:
-        return Color(0xff7f7f7f);
-        break;
-      case ThemeType.dark:
-        return Color(0xff8b8b8b);
-        break;
-    }
-    return Color(0xff7f7f7f);
-  }
-
-  // 背景颜色
-  static Color backgroundColor() {
-    switch (_themeType) {
-      case ThemeType.light:
-        return Color(0xffffffff);
-        break;
-      case ThemeType.dark:
-        return Color(0xff181818);
-        break;
-    }
-    return Color(0xffffffff);
-  }
-
-  // 主题颜色
-  static Color commonTheme1Color() {
-    return Color(0xff697e9d);
-  }
+class IntlMsgs extends Translations {
+  @override
+  Map<String, Map<String, String>> get keys => {
+        'zh_CN': {
+          'appName': '贰拾肆的宠物',
+          'appBarHome': '主页',
+          'appBarTheme': '主题',
+          'appBarLanguage': '语言',
+        },
+        'en_US': {
+          'appName': '8kEatRadish',
+          'appBarHome': 'Home',
+          'appBarTheme': 'Theme',
+          'appBarLanguage': 'Language',
+        },
+      };
 }
 
 class TextTemplate {
   TextTemplate._();
 
-  static LanguageType _languageType = LanguageType.en;
+  static String languageCn = "zh_CN";
+  static String languageEN = "en_US";
 
-  static setLanguageType(LanguageType type) {
-    _languageType = type;
-  }
+  static String appName = "appName";
 
-  //博客title
-  static String appName() {
-    switch (_languageType) {
-      case LanguageType.cn:
-        return "贰拾肆的宠物";
-        break;
-      case LanguageType.en:
-        return "8kEatRadish";
-        break;
-      default:
-        return "8kEatRadish";
-    }
-  }
-
-  /// app_bar_widget
-  // 主页
-  static String appBarHome() {
-    switch (_languageType) {
-      case LanguageType.cn:
-        return "主页";
-        break;
-      case LanguageType.en:
-        return "Home";
-        break;
-      default:
-        return "Home";
-    }
-  }
+  static String appBarHome = "appBarHome";
+  static String appBarTheme = "appBarTheme";
+  static String appBarLanguage = "appBarLanguage";
 }
 
 class AssetsUtils {
   AssetsUtils._();
 
-  static String avatar = "assets/avatar.jpeg";
+  static String homeAvatar = "assets/avatar.jpeg";
+  static String homeWelcome1 = "assets/welcome.jpeg";
 }
 
 TextStyle commonTextStyle = TextStyle(decoration: TextDecoration.none);
