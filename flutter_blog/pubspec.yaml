@@ -71,11 +71,11 @@ flutter:
   fonts:
     - family: maoCao
       fonts:
-        - asset: assets/font/LiuJianMaoCao-Regular.ttf
+        - asset: assets/font/FlutterBlogMaoCao.ttf
 
     - family: xingShu
       fonts:
-        - asset: assets/font/MaShanZheng-Regular.ttf
+        - asset: assets/font/FlutterBlogXingShu.ttf
 
   # An images asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
