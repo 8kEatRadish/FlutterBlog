@@ -26,7 +26,11 @@ class _HomeGushiWidgetState extends State<HomeGushiWidget> {
                 child: Column(
                   children: [
                     Center(
-                      child: Text(snapshot.data.content),
+                      child: Text(
+                        snapshot.data.content,
+                        style: TextStyle(
+                            fontSize: 40, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
