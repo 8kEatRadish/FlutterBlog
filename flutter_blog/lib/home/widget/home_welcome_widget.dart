@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/home/widget/home_welcome_title_widget.dart';
 import 'package:flutter_blog/utils/config.dart';
 import 'package:flutter_blog/widget/run_anion/run_anion.dart';
 import 'package:get/get.dart';
@@ -49,17 +50,10 @@ class _HomeWelcomeWidgetState extends State<HomeWelcomeWidget>
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // 底层图片
         bottomWidget(),
-        SizedBox(
-          width: Get.width,
-          height: Get.height,
-          child: Center(
-            child: Text(
-              "心有猛虎，细嗅蔷薇",
-              style: Get.textTheme.headline4,
-            ),
-          ),
-        ),
+
+        // 动画箭头
         Positioned(
             width: 200,
             height: 200,
@@ -88,7 +82,17 @@ class _HomeWelcomeWidgetState extends State<HomeWelcomeWidget>
                 );
               },
             )),
-        RunAnion()
+        // 离子动画
+        RunAnion(),
+
+        // 欢迎title
+        SizedBox(
+          width: Get.width,
+          height: Get.height,
+          child: Center(
+            child: HomeWelcomeTitleWidget(),
+          ),
+        ),
       ],
     );
   }
