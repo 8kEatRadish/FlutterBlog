@@ -20,7 +20,7 @@ ThemeData lightTheme = ThemeData.from(
             color: Color(0xff242424),
             fontSize: 26,
             decoration: TextDecoration.none,
-            // fontFamily: "xingShu"
+            fontFamily: "xingShu"
         ),
         // appBar tag
         // normal
@@ -28,14 +28,14 @@ ThemeData lightTheme = ThemeData.from(
             fontSize: 17,
             color: Color(0xff242424),
             decoration: TextDecoration.none,
-            // fontFamily: "xingShu"
+            fontFamily: "xingShu"
         ),
         headline3:
         TextStyle(
             fontSize: 17,
             color: Color(0xff697e9d),
             decoration: TextDecoration.none,
-            // fontFamily: "xingShu"
+            fontFamily: "xingShu"
         ),
         // welcome title
         headline4: TextStyle(
