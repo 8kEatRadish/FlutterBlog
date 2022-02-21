@@ -1,10 +1,15 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/article/model/article_model.dart';
+import 'package:flutter_blog/article/model/tags.dart';
 import 'package:flutter_blog/home/home_article_list.dart';
+import 'package:flutter_blog/home/widget/home_bottom_widget.dart';
 import 'package:flutter_blog/home/widget/home_gushi_widget.dart';
 import 'package:flutter_blog/home/widget/home_welcome_widget.dart';
 import 'package:flutter_blog/widget/app_bar_widget.dart';
+import 'package:flutter_blog/widget/home_music_widget.dart';
+import 'package:flutter_blog/widget/home_pet_widget.dart';
 import 'package:get/get.dart';
 
 /// https://gravual.com/
@@ -46,22 +51,45 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     });
   }
 
+  Future<List<ArticleModel>> _articles =
+      Future.delayed(Duration(milliseconds: 2), () {
+    List<ArticleModel> list = [];
+    for (int i = 0; i < 8; i++) {
+      list.add(ArticleModel(
+          "title$i", 0, "content", "cover", false, [Tags.Android]));
+    }
+    return list;
+  });
+
   @override
   Widget build(BuildContext context) {
-    Widget content = HomeArticleList(8);
+    // 文章列表
+    Widget content = FutureBuilder<List<ArticleModel>>(
+        future: _articles,
+        builder:
+            (BuildContext context, AsyncSnapshot<List<ArticleModel>> snapshot) {
+          if (snapshot.hasData) {
+            return HomeArticleList(snapshot.data);
+          }
+          return Container();
+        });
 
     content = SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          // 欢迎模块
           HomeWelcomeWidget(),
+          // 古诗模块
           HomeGushiWidget(),
           SizedBox(
             child: content,
             width: Get.width - 300,
             height: Get.width - 300,
-          )
+          ),
+          // 底部信息模块
+          HomeBottomWidget()
         ],
       ),
     );
@@ -71,7 +99,13 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         body: content);
 
     content = Stack(
-      children: [content, Positioned(top: 0, child: AppBarWidget())],
+      children: [
+        content,
+        Positioned(bottom: 0, left: 0, child: MusicWidget()),
+        Positioned(bottom: 0, right: 0, child: PetWidget()),
+        // appBar模块
+        Positioned(top: 0, child: AppBarWidget())
+      ],
     );
 
     return content;

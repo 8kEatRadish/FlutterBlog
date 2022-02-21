@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/article/model/article_model.dart';
+import 'package:flutter_blog/home/widget/home_web_article_item_widget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 /// home页文章列表
 class HomeArticleList extends StatefulWidget {
-  final int size;
+  final List<ArticleModel> articleModels;
 
-  const HomeArticleList(this.size, {Key key}) : super(key: key);
+  const HomeArticleList(this.articleModels, {Key key}) : super(key: key);
 
   @override
   _HomeArticleListState createState() => _HomeArticleListState();
@@ -29,11 +31,9 @@ class _HomeArticleListState extends State<HomeArticleList> {
         ],
       ),
       childrenDelegate: SliverChildBuilderDelegate(
-          (context, index) => Card(
-                child: Center(child: Text((index - 1).toString())),
-                color: Colors.black45,
-              ),
-          childCount: widget.size),
+          (context, index) =>
+              HomeWebArticleItemWidget(widget.articleModels[index]),
+          childCount: widget.articleModels.length),
     );
   }
 }

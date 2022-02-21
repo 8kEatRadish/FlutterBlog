@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/blog_route.dart';
 import 'package:flutter_blog/controller.dart';
-import 'package:flutter_blog/home/widget/home_tag_widget.dart';
+import 'package:flutter_blog/widget/home_tag_widget.dart';
 import 'package:flutter_blog/utils/config.dart';
 import 'package:get/get.dart';
 
@@ -25,9 +25,18 @@ class _AppBarWidgetState extends State<AppBarWidget> {
     );
 
     content = Container(
-      color: Theme.of(context).colorScheme.surface,
       width: Get.width,
       height: 50,
+      decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          boxShadow: [
+            BoxShadow(
+              color: Color(0x33000000),
+              offset: Offset(0, 3),
+              blurRadius: 0,
+              spreadRadius: 0,
+            )
+          ]),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
