@@ -53,7 +53,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
             }
           }),
           HomeTagWidget(TextTemplate.appBarHome.tr, Icons.home_rounded, () {
-            Get.to(RouteConfig.familyBoardHome);
+            Get.snackbar("title", "home");
           }),
           SizedBox(
             width: 24,

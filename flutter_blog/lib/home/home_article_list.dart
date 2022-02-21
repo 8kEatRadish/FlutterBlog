@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/home/widget/home_welcome_widget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:get/get.dart';
+
 /// home页文章列表
 class HomeArticleList extends StatefulWidget {
   final int size;
@@ -15,7 +14,7 @@ class HomeArticleList extends StatefulWidget {
 class _HomeArticleListState extends State<HomeArticleList> {
   @override
   Widget build(BuildContext context) {
-    Widget content = GridView.custom(
+    return GridView.custom(
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverQuiltedGridDelegate(
         crossAxisCount: 4,
@@ -36,21 +35,5 @@ class _HomeArticleListState extends State<HomeArticleList> {
               ),
           childCount: widget.size),
     );
-
-    content = SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          HomeWelcomeWidget(),
-          SizedBox(
-            child: content,
-            width: Get.width - 300,
-            height: Get.width - 300,
-          )
-        ],
-      ),
-    );
-    return content;
   }
 }

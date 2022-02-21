@@ -1,10 +1,9 @@
-import 'dart:html';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/home/home_article_list.dart';
-import 'package:flutter_blog/utils/config.dart';
-import 'package:flutter_blog/utils/enums.dart';
+import 'package:flutter_blog/home/widget/home_gushi_widget.dart';
+import 'package:flutter_blog/home/widget/home_welcome_widget.dart';
 import 'package:flutter_blog/widget/app_bar_widget.dart';
 import 'package:get/get.dart';
 
@@ -50,6 +49,22 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     Widget content = HomeArticleList(8);
+
+    content = SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          HomeWelcomeWidget(),
+          HomeGushiWidget(),
+          SizedBox(
+            child: content,
+            width: Get.width - 300,
+            height: Get.width - 300,
+          )
+        ],
+      ),
+    );
 
     content = Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
