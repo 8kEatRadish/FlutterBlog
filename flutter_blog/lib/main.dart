@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       fallbackLocale: Locale('en', 'US'),
 
 
-      title: TextTemplate.appName.tr,
+      title: "贰拾肆的宠物_8kEatRadish",
       initialRoute: RouteConfig.familyBoardHome,
       defaultTransition: Transition.fadeIn,
       getPages: RouteConfig.getPages,
