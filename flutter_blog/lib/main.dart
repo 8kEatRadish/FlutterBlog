@@ -4,8 +4,23 @@ import 'package:flutter_blog/controller.dart';
 import 'package:flutter_blog/utils/config.dart';
 import 'package:get/get.dart';
 
+import 'main.dart' deferred as myApp;
+
 void main() {
-  runApp(MyApp());
+  runApp(FutureBuilder(
+      future: myApp.loadLibrary(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return myApp.MyApp();
+        } else {
+          return Text("Loading",
+              style: TextStyle(
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                  fontSize: 70),
+              textDirection: TextDirection.ltr);
+        }
+      }));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +40,6 @@ class MyApp extends StatelessWidget {
       translations: IntlMsgs(),
       locale: Locale('zh', 'CN'),
       fallbackLocale: Locale('en', 'US'),
-
 
       title: "贰拾肆的宠物_8kEatRadish",
       initialRoute: RouteConfig.familyBoardHome,

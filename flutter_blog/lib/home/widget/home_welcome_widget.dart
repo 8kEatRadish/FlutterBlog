@@ -1,5 +1,7 @@
 import 'dart:html';
+import 'dart:typed_data';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/home/widget/home_welcome_title_widget.dart';
 import 'package:flutter_blog/utils/config.dart';
@@ -98,10 +100,15 @@ class _HomeWelcomeWidgetState extends State<HomeWelcomeWidget>
   }
 
   // 底部图片
-  Widget bottomWidget() => Image.asset(
-        AssetsUtils.homeWelcome1,
-        fit: BoxFit.cover,
+  Widget bottomWidget() => CachedNetworkImage(
+        imageUrl: "https://s2.loli.net/2022/02/21/kz6XRHGl52JdZYr.jpg",
         width: Get.width,
         height: Get.height,
+        fit: BoxFit.cover,
+        placeholder: (content, string) {
+          return Container(
+            color: Colors.black,
+          );
+        },
       );
 }

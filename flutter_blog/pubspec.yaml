@@ -47,6 +47,9 @@ dependencies:
   # 网络
   dio: ^4.0.4
 
+  # 网络图片加载
+  cached_network_image: ^3.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
