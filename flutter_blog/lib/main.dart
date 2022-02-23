@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/blog_route.dart';
 import 'package:flutter_blog/controller.dart';
 import 'package:flutter_blog/utils/config.dart';
+import 'package:flutter_blog/widget/square_grid_scale_loading.dart';
 import 'package:get/get.dart';
 
 import 'main.dart' deferred as myApp;
@@ -13,12 +14,7 @@ void main() {
         if (snapshot.connectionState == ConnectionState.done) {
           return myApp.MyApp();
         } else {
-          return Text("Loading",
-              style: TextStyle(
-                  color: Colors.black,
-                  decoration: TextDecoration.none,
-                  fontSize: 70),
-              textDirection: TextDirection.ltr);
+          return SquareGridScaleLoading();
         }
       }));
 }

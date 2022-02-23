@@ -1,10 +1,8 @@
 import 'dart:html';
-import 'dart:typed_data';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/home/widget/home_welcome_title_widget.dart';
-import 'package:flutter_blog/utils/config.dart';
 import 'package:flutter_blog/widget/run_anion/run_anion.dart';
 import 'package:get/get.dart';
 
@@ -46,6 +44,13 @@ class _HomeWelcomeWidgetState extends State<HomeWelcomeWidget>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.ease));
 
     _controller.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
   }
 
   @override

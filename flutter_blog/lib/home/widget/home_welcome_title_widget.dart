@@ -27,6 +27,13 @@ class _HomeWelcomeTitleWidgetState extends State<HomeWelcomeTitleWidget>
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onHover: (hover) {
