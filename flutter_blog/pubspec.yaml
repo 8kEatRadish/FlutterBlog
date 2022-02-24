@@ -36,7 +36,7 @@ dependencies:
   url_launcher: ^6.0.2
 
   # google字体
-  google_fonts: ^2.0.0
+#  google_fonts: ^2.0.0
 
   # 瀑布流
   flutter_staggered_grid_view: ^0.6.1
@@ -49,6 +49,18 @@ dependencies:
 
   # 网络图片加载
   cached_network_image: ^3.2.0
+
+  # for TOC
+  scrollable_positioned_list: ^0.2.2
+
+  #markdown data parser
+  markdown: ^4.0.0
+  #highlight code
+  highlight: ^0.7.0
+  flutter_highlight: ^0.7.0
+
+  #html tag parser
+  html: ^0.15.0
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +85,7 @@ flutter:
   assets:
     - assets/
     - assets/font/
+    - assets/article/
 
   fonts:
     - family: maoCao

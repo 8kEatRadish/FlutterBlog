@@ -31,12 +31,11 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   // Generate a list of dummy items
   final List<Map<String, dynamic>> _items = List.generate(
       200,
-          (index) =>
-      {
-        "id": index,
-        "title": "This is test!",
-        "height": Random().nextInt(150) + 50
-      });
+      (index) => {
+            "id": index,
+            "title": "This is test!",
+            "height": Random().nextInt(150) + 50
+          });
 
   @override
   void initState() {
@@ -79,7 +78,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   Future<List<ArticleModel>> _articles =
-  Future.delayed(Duration(milliseconds: 2), () {
+      Future.delayed(Duration(milliseconds: 2), () {
     List<ArticleModel> list = [];
     for (int i = 0; i < 8; i++) {
       list.add(ArticleModel(
@@ -127,10 +126,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     );
 
     content = Scaffold(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .background,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: content);
 
     content = Stack(

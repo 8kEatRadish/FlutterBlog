@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/article/model/article_model.dart';
+import 'package:flutter_blog/blog_route.dart';
 import 'package:flutter_blog/widget/animated_images_widget.dart';
+import 'package:get/get.dart';
 
 class HomeWebArticleItemWidget extends StatefulWidget {
   final ArticleModel articleModel;
@@ -53,7 +55,9 @@ class _HomeWebArticleItemWidgetState extends State<HomeWebArticleItemWidget>
           _controller.reverse();
         }
       },
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(RouteConfig.articlePage);
+      },
       child: Card(
         child: Stack(
           children: [

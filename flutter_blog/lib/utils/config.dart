@@ -118,8 +118,12 @@ class TextTemplate {
 class AssetsUtils {
   AssetsUtils._();
 
+  // image
   static String homeAvatar = "assets/avatar.jpeg";
-  static String homeWelcome1 = "assets/welcome.jpeg";
+
+
+  // md
+  static const String article = "assets/article/基于ViewModel、LiveData的消息总线OneStepMessage.md";
 }
 
 TextStyle commonTextStyle = TextStyle(decoration: TextDecoration.none);
