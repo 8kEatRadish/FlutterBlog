@@ -275,6 +275,7 @@ public class ViewModelStore {
 
   每一个message在创建的时候都要有业务自己传入审查代码，控制消息发送，该message的所有发送都要经过审查，可以确定唯一可信发送源。
 
+
   ```java
   class DemoViewModel : ViewModel() {
   
@@ -299,6 +300,7 @@ public class ViewModelStore {
   ```
 
   在EventLiveData.class中：
+
 
   ```java
       fun postEventValue(value: T) {
@@ -330,6 +332,7 @@ public class ViewModelStore {
 
 - **创建一个ViewModel来控制是模块消息还是全局消息。**
 
+
   ```java
   class DemoViewModel : ViewModel() {
   
@@ -355,6 +358,7 @@ public class ViewModelStore {
 
 - **一行代码发送消息，一行代码订阅消息。**
 
+
   ```java
   				findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
               //发送一个消息1
@@ -369,6 +373,7 @@ public class ViewModelStore {
   ```
 
 - **针对Java，添加了CallBack优化，提升编写体验。**
+
 
   ```java
   				findViewById(R.id.button_second_message1).setOnClickListener(new View.OnClickListener(){
@@ -401,6 +406,7 @@ public class ViewModelStore {
   单独接收消息，相互不影响。
 
 造成这种情况是因为LiveData有一个问题，就是会发送多个重复消息给观察者，我这边包装处理Observer来防止此类问题：
+
 
 ```java
     /**
