@@ -101,6 +101,7 @@ public class ViewModelStore {
 
 - **确保界面符合数据状态**
 
+
   ```java
    @SuppressWarnings("WeakerAccess") /* synthetic access */
       void dispatchingValue(@Nullable ObserverWrapper initiator) {
@@ -132,6 +133,7 @@ public class ViewModelStore {
 
 - **不会发生内存泄漏**
 
+
   ```java
           @Override
           public void onStateChanged(@NonNull LifecycleOwner source,
@@ -153,6 +155,7 @@ public class ViewModelStore {
   在LiveData中，观察者会绑定到Lifecycle对象，并在其关联的生命周期遭到销毁后进行自我清理。
 
 - **不会因 Activity 停止而导致崩溃**
+
 
   ```java
   @SuppressWarnings("unchecked")
@@ -186,6 +189,7 @@ public class ViewModelStore {
 - **数据始终保持最新状态**
 
   观察者生命周期从非活跃状态到活跃状态，或者重新创建都会收到最新版本的数据，LiveData会记录更新版本号。
+
 
   ```java
       private abstract class ObserverWrapper {
