@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/net/article_provider.dart';
 import 'package:flutter_blog/net/gushi_provider.dart';
 import 'package:flutter_blog/net/model/gushi_model.dart';
 import 'package:get/get.dart';

@@ -14,6 +14,7 @@ class HomeArticleList extends StatefulWidget {
 }
 
 class _HomeArticleListState extends State<HomeArticleList> {
+
   @override
   Widget build(BuildContext context) {
     return GridView.custom(
@@ -31,7 +32,7 @@ class _HomeArticleListState extends State<HomeArticleList> {
         ],
       ),
       childrenDelegate: SliverChildBuilderDelegate(
-          (context, index) =>
+              (context, index) =>
               HomeWebArticleItemWidget(widget.articleModels[index]),
           childCount: widget.articleModels.length),
     );

@@ -8,7 +8,7 @@ class SquareGridScaleLoading extends StatefulWidget {
 
   const SquareGridScaleLoading(
       {Key key,
-      this.color = const Color(0xff697e9d),
+      this.color = const Color(0xffffffff),
       this.size = 48.0,
       this.duration = const Duration(milliseconds: 1500),
       this.curve = Curves.linear})

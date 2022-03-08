@@ -101,6 +101,7 @@ public class ViewModelStore {
 
 - **确保界面符合数据状态**
 
+
   ```java
    @SuppressWarnings("WeakerAccess") /* synthetic access */
       void dispatchingValue(@Nullable ObserverWrapper initiator) {
@@ -132,6 +133,7 @@ public class ViewModelStore {
 
 - **不会发生内存泄漏**
 
+
   ```java
           @Override
           public void onStateChanged(@NonNull LifecycleOwner source,
@@ -153,6 +155,7 @@ public class ViewModelStore {
   在LiveData中，观察者会绑定到Lifecycle对象，并在其关联的生命周期遭到销毁后进行自我清理。
 
 - **不会因 Activity 停止而导致崩溃**
+
 
   ```java
   @SuppressWarnings("unchecked")
@@ -186,6 +189,7 @@ public class ViewModelStore {
 - **数据始终保持最新状态**
 
   观察者生命周期从非活跃状态到活跃状态，或者重新创建都会收到最新版本的数据，LiveData会记录更新版本号。
+
 
   ```java
       private abstract class ObserverWrapper {
@@ -275,6 +279,7 @@ public class ViewModelStore {
 
   每一个message在创建的时候都要有业务自己传入审查代码，控制消息发送，该message的所有发送都要经过审查，可以确定唯一可信发送源。
 
+
   ```java
   class DemoViewModel : ViewModel() {
   
@@ -299,6 +304,7 @@ public class ViewModelStore {
   ```
 
   在EventLiveData.class中：
+
 
   ```java
       fun postEventValue(value: T) {
@@ -330,6 +336,7 @@ public class ViewModelStore {
 
 - **创建一个ViewModel来控制是模块消息还是全局消息。**
 
+
   ```java
   class DemoViewModel : ViewModel() {
   
@@ -355,6 +362,7 @@ public class ViewModelStore {
 
 - **一行代码发送消息，一行代码订阅消息。**
 
+
   ```java
   				findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
               //发送一个消息1
@@ -369,6 +377,7 @@ public class ViewModelStore {
   ```
 
 - **针对Java，添加了CallBack优化，提升编写体验。**
+
 
   ```java
   				findViewById(R.id.button_second_message1).setOnClickListener(new View.OnClickListener(){
@@ -401,6 +410,7 @@ public class ViewModelStore {
   单独接收消息，相互不影响。
 
 造成这种情况是因为LiveData有一个问题，就是会发送多个重复消息给观察者，我这边包装处理Observer来防止此类问题：
+
 
 ```java
     /**

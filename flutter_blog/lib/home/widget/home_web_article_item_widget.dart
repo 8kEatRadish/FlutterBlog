@@ -62,6 +62,7 @@ class _HomeWebArticleItemWidgetState extends State<HomeWebArticleItemWidget>
         child: Stack(
           children: [
             AnimatedImages(
+              widget.articleModel.cover,
               animation: _imageAnimation,
             ),
             Center(

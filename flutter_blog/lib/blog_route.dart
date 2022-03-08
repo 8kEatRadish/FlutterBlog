@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_blog/article/markdown_page.dart';
+import 'package:flutter_blog/widget/square_grid_scale_loading.dart';
 import 'package:get/get.dart';
 
 import 'home/home_page.dart';
@@ -17,8 +19,11 @@ class RouteConfig {
 
   static final List<GetPage> getPages = [
     GetPage(name: familyBoardHome, page: () => HomePage()),
-    GetPage(name: articlePage, page: (){
-      return MarkdownPage();
-    })
+    GetPage(
+        name: articlePage,
+        page: () {
+          return MarkdownPage();
+        },
+        transition: Transition.size)
   ];
 }

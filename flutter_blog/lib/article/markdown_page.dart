@@ -6,6 +6,7 @@ import 'package:flutter_blog/markdown/markdown_toc.dart';
 import 'package:flutter_blog/markdown/markdown_widget.dart';
 import 'package:flutter_blog/utils/config.dart';
 import 'package:flutter_blog/utils/util.dart';
+import 'package:flutter_blog/widget/square_grid_scale_loading.dart';
 
 class MarkdownPage extends StatefulWidget {
   final String assetsPath;
@@ -29,25 +30,18 @@ class _MarkdownPageState extends State<MarkdownPage> {
 
   @override
   void initState() {
-    if (widget.assetsPath != null) {
-      loadData(widget.assetsPath);
-    } else {
-      this.data = widget.markdownData;
-    }
     super.initState();
   }
 
-  void loadData(String assetsPath) {
+  Future<void> loadData(String assetsPath) async {
     if (dataMap[isEnglish] != null) {
       data = dataMap[isEnglish];
-      refresh();
-      return;
-    }
-    rootBundle.loadString(assetsPath).then((data) {
+    } else {
+      var data = await rootBundle.loadString(assetsPath);
       dataMap[isEnglish] = data;
       this.data = data;
-      refresh();
-    });
+    }
+    await Future.delayed(Duration(milliseconds: 2000));
   }
 
   void refresh() {
@@ -56,12 +50,21 @@ class _MarkdownPageState extends State<MarkdownPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isMobile = false;
-
     return Scaffold(
-      body: data == null
-          ? Center(child: CircularProgressIndicator())
-          : (isMobile ? buildMobileBody() : buildWebBody()),
+      body: FutureBuilder(
+        future: loadData(widget.assetsPath),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return buildWebBody();
+          } else {
+            return Center(
+              child: SquareGridScaleLoading(
+                color: Color(0xff697e9d),
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 
@@ -149,10 +152,6 @@ class _MarkdownPageState extends State<MarkdownPage> {
         )
       ],
     );
-  }
-
-  Widget buildMobileBody() {
-    return buildMarkdown();
   }
 
   Widget buildWebBody() {

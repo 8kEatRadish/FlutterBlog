@@ -16,7 +16,6 @@ import 'package:flutter_blog/widget/square_grid_scale_loading.dart';
 import 'package:get/get.dart';
 
 import '../controller.dart';
-import '../deferred_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -80,14 +79,17 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   Future<List<ArticleModel>> _articles =
       Future.delayed(Duration(milliseconds: 2), () {
     List<ArticleModel> list = [];
-    for (int i = 0; i < 8; i++) {
+    for (int n = 0; n < 9; n++) {
       list.add(ArticleModel(
-          "title$i",
-          0,
-          "content",
-          "https://s2.loli.net/2022/02/21/kz6XRHGl52JdZYr.jpg",
-          false,
-          [Tags.Android]));
+          tags: "Android",
+          updatedAt: "0",
+          top: false,
+          content: "##TEST",
+          objectId: "0",
+          createTime: 0,
+          cover: "https://s2.loli.net/2022/03/07/rfHey24Jb56UtNK.png",
+          createdAt: "0",
+          title: "title$n"));
     }
     return list;
   });
